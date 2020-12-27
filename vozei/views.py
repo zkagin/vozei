@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -9,5 +10,5 @@ class SignupView(generic.CreateView):
     template_name = "registration/signup.html"
 
 
-class ProfileView(generic.base.TemplateView):
+class ProfileView(LoginRequiredMixin, generic.base.TemplateView):
     template_name = "registration/profile.html"

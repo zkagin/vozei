@@ -21,7 +21,8 @@ from vozei import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/signup/", views.SignupView.as_view(), name="signup"),
+    # path("accounts/", include("django.contrib.auth.urls")),
+    # path("accounts/signup/", views.SignupView.as_view(), name="signup"),
     path("accounts/profile/", views.ProfileView.as_view(), name="profile"),
+    path("accounts/", include("allauth.urls")),
 ]
