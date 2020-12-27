@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<div class="row d-flex p-5 justify-content-center align-items-center" style="min-height:600px">
+  <div class="col-5">
+    <img class="float-end" src="{% static 'images/microphone.png' %}" width=70% />
+  </div>
+  <div class="col">
+    <div class="d-inline-block text-center">
+      {% load socialaccount %}
+      
+      <div class="h4 text-body m-2">Easy voice assignments to practice speaking.</div>
+      <a type="button" class="btn btn-outline-primary m-2" href="{% provider_login_url "google" process="login" %}">
+        <img class="mb-1 me-1" width=20px src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+        Sign In With Google
+      </a>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
