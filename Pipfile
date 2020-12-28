@@ -8,6 +8,7 @@ black = "*"
 flake8 = "*"
 django = "*"
 django-allauth = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
