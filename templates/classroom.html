@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="row m-5">
+  <div class="h4 text-center">{{ classroom.name }}</div>
+</div>
+<div class="row m-5 d-flex justify-content-center">
+  <div class="col-6">
+    <h5>Members</h5><br />
+    {% for membership in classroom.membership_set.all %}
+    {{ membership.user }} {% if membership.is_teacher %}(Teacher){% endif %}
+    <br />
+    {% endfor %}
+  </div>
+  <div class="col-6">
+    <h5>Assignments</h5><br />
+    {% for assignment in classroom.assignment_set.all %}
+      {% if is_teacher %}
+        <a href="{% url 'core:assignment_admin' assignment.pk %}">
+          {{ assignment.text }} ({{ assignment.submission_set.count }} submissions)
+        </a>
+        <br />
+      {% else %}
+        <a href="{% url 'core:assignment' assignment.pk %}">{{ assignment.text }}</a>
+        <br />
+      {% endif %}
+    {% endfor %}
+    {% if is_teacher %}
+      <a href="{% url 'core:create_assignment' classroom.pk %}">Create assignment</a>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

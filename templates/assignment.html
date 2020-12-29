@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<div class="row m-5">
+  <div class="h4 text-center">{{ assignment.text }}</div>
+  <img height="200px" src="{% static 'images/recording.jpeg' %}" />
+  <br />
+  {% for submission in assignment.submission_set.all %}
+    {% if submission.user == user %}
+      <div>Your Submissions:</div>
+      <div>
+        <a href="{% url 'core:submission' submission.pk %}">
+          {{ submission.user }} {{ submission.file_url }}
+        </a>
+        <br />
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

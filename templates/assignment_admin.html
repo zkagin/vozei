@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<div class="row m-5">
+  <div class="h4 text-center">{{ assignment.text }}</div>
+  <br />
+  {% for submission in assignment.submission_set.all %}
+    <div>All current submissions:</div>
+    <div>
+      <a href="{% url 'core:submission' submission.pk %}">
+        {{ submission.user }} {{ submission.file_url }}
+      </a>
+      <br />
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,1 +1,8 @@
+.choice {
+  height: 150px;
+  background-color: rgba(230, 230, 230, 0);
+}
 
+.choice:hover {
+  background-color: rgba(230, 230, 230, 0.3);
+}
